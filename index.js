@@ -5,8 +5,8 @@ const axios = require("axios");
 const https = require("https");
 
 const envState = process.env.ENV_STATE.trim(); // Ensure no extra spaces
-const devUrl = process.env.DEV_URL;
-const prodUrl = process.env.PROD_URL;
+const devUrl = `${process.env.DEV_URL}/api/log`;
+const prodUrl = `${process.env.PROD_URL}/api/log`;
 let URL = "";
 
 // Improved URL selection with logging
