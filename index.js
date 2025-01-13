@@ -18,17 +18,14 @@ switch (envState) {
     URL = devUrl;
     break;
 }
-
 console.log(`Environment State: ${envState}`);
 console.log(`Selected URL: ${URL}`);
-
-// Create an Axios instance that accepts self-signed certificates
 const axiosInstance = axios.create({
+  // Create an Axios instance that accepts self-signed certificates
   httpsAgent: new https.Agent({
     rejectUnauthorized: false,
   }),
 });
-
 const testPostData = async () => {
   try {
     const response = await axiosInstance.post(
@@ -44,13 +41,10 @@ const testPostData = async () => {
         },
       }
     );
-
-    // Log the full response object
     //console.log("Full response from server:", response);
     console.log("Response data from server:", response.data);
   } catch (error) {
     console.error("Error posting data:", error.message);
   }
 };
-
 testPostData();
