@@ -3,13 +3,10 @@ console.log(`Init Env Vars...`);
 require("dotenv").config(); // Ensure the .env file is loaded
 const axios = require("axios");
 const https = require("https");
-
 const envState = process.env.ENV_STATE.trim(); // Ensure no extra spaces
-const devUrl = `${process.env.DEV_URL}/api/log`;
-const prodUrl = `${process.env.PROD_URL}/api/log`;
+const devUrl = `${process.env.DEV_URL}/api/post`;
+const prodUrl = `${process.env.PROD_URL}/api/post`;
 let URL = "";
-
-// Improved URL selection with logging
 switch (envState) {
   case "dev":
     URL = devUrl;
@@ -18,7 +15,7 @@ switch (envState) {
     URL = prodUrl;
     break;
   default:
-    URL = devUrl; // Fallback devURL
+    URL = devUrl;
     break;
 }
 
@@ -37,13 +34,13 @@ const testPostData = async () => {
     const response = await axiosInstance.post(
       URL,
       {
-        username: "exampleUser",
-        role: "admin",
+        username: "Axios Fetcher",
+        role: "Client Requester",
       },
       {
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer test-token",
+          Authorization: "Bearer TOKEN",
         },
       }
     );
